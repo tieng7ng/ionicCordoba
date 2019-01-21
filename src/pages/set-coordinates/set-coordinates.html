@@ -7,17 +7,20 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  <!--
-  <agm-map [latitude]="latitude" [longitude]="longitude" (mapClick)="onMapClicked($event)">
-    <agm-marker *ngIf="marker" [latitude]="marker.latitude" [longitude]="marker.longitude" [markerDraggable]="marker.draggable"></agm-marker>
-  </agm-map>
--->
-  <agm-map [latitude]="lat" [longitude]="lng">
-    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-  </agm-map>
-  
-  
 
+<ion-content padding>
+  <agm-map [latitude]="latitude"
+           [longitude]="longitude"
+           (mapClick)="onMapClicked($event)">
+    <agm-marker *ngIf="marker"
+                [latitude]="marker.latitude"
+                [longitude]="marker.longitude"
+                [markerDraggable]="marker.draggable"></agm-marker>
+  </agm-map>
+  <div text-center>
+    <button ion-button round large icon-only (click)="onLocateMe()">
+      <ion-icon name="locate"></ion-icon>
+    </button>
+  </div>
   <button ion-button full [disabled]="!marker" (click)="onSave()">Enregistrer</button>
 </ion-content>

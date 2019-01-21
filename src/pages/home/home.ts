@@ -4,7 +4,8 @@ import { NatureView } from '../../models/NatureView.model';
 import { Subscription } from 'rxjs/Subscription';
 import { NatureViewService } from '../../services/natureView.service';
 
-import { NewViewPage } from '../../pages/new-view/new-view';
+import { NewViewPage } from '../new-view/new-view';
+import { SingleViewPage } from '../single-view/single-view';
 
 @Component({
   selector: 'page-home',
@@ -13,6 +14,7 @@ import { NewViewPage } from '../../pages/new-view/new-view';
 
 export class HomePage implements OnInit, OnDestroy {
 
+  // Coordonnees list
   natureViewList: NatureView[];
   natureViewListSubscription: Subscription;
   newViewPage = NewViewPage;
@@ -33,6 +35,11 @@ export class HomePage implements OnInit, OnDestroy {
     );
     this.natureViewService.emitList();
   }
+
+  onLoadNatureView(view: NatureView) {
+    this.navCtrl.push(SingleViewPage, {natureView: view});
+  }
+
 
   ngOnDestroy() {
     this.natureViewListSubscription.unsubscribe();

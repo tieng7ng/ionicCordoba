@@ -27,7 +27,17 @@
       Ajouter lieu
     </button>
 
-    <button ion-button full (click)="onSubmitForm()" [disabled]="natureViewForm.invalid">
+    <ion-list *ngIf="latitude">
+      <ion-item>
+        <p>Latitude : {{ latitude.toFixed(2) }} - Longitude : {{ longitude.toFixed(2) }}</p>
+      </ion-item>
+    </ion-list>
+    <div text-center>
+      <button ion-button round large icon-only (click)="onTakePhoto()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+    </div>
+    <button ion-button full (click)="onSubmitForm()" [disabled]="natureViewForm.invalid || !latitude ">
       Enregistrer
     </button>
 
